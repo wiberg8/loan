@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <section class="form-section">
+            <h1>Loan Calculator</h1>
+            <form id="loanForm">
+                <div class="form-group">
+                    <label for="estateValue">Bostadens värde</label>
+                    <input type="number" id="estateValue" name="estateValue" aria-label="estateValue" value="100" required/>
+                </div>
+                <div class="form-group">
+                    <label for="startLoan">Ursprungligt lån</label>
+                    <input type="number" id="startLoan" name="startLoan" aria-label="Initial loan amount" value="100" required/>
+                </div>
+                <div class="form-group">
+                    <label for="mortgagePerMonth">Amortering per månad</label>
+                    <input type="number" id="mortgagePerMonth" name="mortgagePerMonth" aria-label="Monthly mortgage payment" value="100" required/>
+                </div>
+                <div class="form-group">
+                    <label for="interestPerMonth">Ränta</label>
+                    <input type="range" id="interestPerMonth" name="interestPerMonth" min="0" max="20" step="0.1" value="5" oninput="updateInterestValue(this.value)" required/>
+                    <span id="interestValue">5</span>
+                </div>
+                <hr class="separator">
+                <div class="form-group">
+                    <label for="investPerMonth">Investering per månad</label>
+                    <input type="number" id="investPerMonth" name="investPerMonth" aria-label="Investment per month" value="100" required/>
+                </div>
+
+                <div class="form-group">
+                    <label for="investReturnPerMonth">Ökning per månad</label>
+                    <input type="range" id="investReturnPerMonth" name="investReturnPerMonth" min="0" max="20" step="0.1" value="7" oninput="investReturnPerMonthValue(this.value)" required/>
+                    <span id="investReturnPerMonthValue">7</span>
+                </div>
+                <button type="submit">Calculate</button>
+            </form>
+        </section>
+        <section class="result-section">
+            <h1>Calculation Results</h1>
+            <div id="results">
+                <!-- Results will be displayed here -->
+            </div>
+        </section>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+</html>
