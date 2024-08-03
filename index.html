@@ -11,10 +11,10 @@
         <section class="form-section">
             <h1>Loan Calculator</h1>
             <form id="loanForm">
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="estateValue">Bostadens värde</label>
                     <input type="number" id="estateValue" name="estateValue" aria-label="estateValue" value="100" required/>
-                </div>
+                </div> -->
                 <div class="form-group">
                     <label for="startLoan">Ursprungligt lån</label>
                     <input type="number" id="startLoan" name="startLoan" aria-label="Initial loan amount" value="100" required/>
@@ -35,8 +35,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="investReturnPerMonth">Ökning per månad</label>
-                    <input type="range" id="investReturnPerMonth" name="investReturnPerMonth" min="0" max="20" step="0.1" value="7" oninput="investReturnPerMonthValue(this.value)" required/>
+                    <label for="investReturn">Ökning per månad</label>
+                    <input type="range" id="investReturn" name="investReturn" min="0" max="20" step="0.1" value="7" oninput="investReturnPerMonthValue(this.value)" required/>
                     <span id="investReturnPerMonthValue">7</span>
                 </div>
                 <button type="submit">Calculate</button>
