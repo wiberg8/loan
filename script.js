@@ -20,12 +20,12 @@ document.getElementById('loanForm').addEventListener('submit', function(event) {
 });
 
 function mySecond() {
-    const estateValue = parseFloat(document.getElementById('estateValue').value);
+    // const estateValue = parseFloat(document.getElementById('estateValue').value);
     const startLoan = parseFloat(document.getElementById('startLoan').value);
     const mortgagePerMonth = parseFloat(document.getElementById('mortgagePerMonth').value);
     const intrest = parseFloat(document.getElementById('interestPerMonth').value);
     const investPerMonth = parseFloat(document.getElementById('investPerMonth').value);
-    const investReturnPerMonth = parseFloat(document.getElementById('investReturnPerMonth').value);
+    const investReturn = parseFloat(document.getElementById('investReturn').value);
     
     let currentLoan = startLoan;
     let totalInvestment = 0;
@@ -34,13 +34,11 @@ function mySecond() {
     let investProfit = 0;
 
     while (currentLoan - totalInvestment > 0) {
-    // while ((currentLoan - totalInvestment) > estateValue / 2) {
-    // while (currentLoan - totalInvestment > startLoan / 2) {
         totalIntrestPaid += ((intrest / 100) * currentLoan) / 12;
         currentLoan -= mortgagePerMonth;
         totalInvestment += investPerMonth;
         let prevTotalInvestment = totalInvestment;
-        totalInvestment *=  1 + investReturnPerMonth / 100 / 12;
+        totalInvestment *=  1 + investReturn / 100 / 12;
         investProfit += totalInvestment - prevTotalInvestment;
         months++;
 
@@ -69,6 +67,11 @@ function mySecond() {
         {
             name: "totalInvestmentProfit",
             value: investProfit,
+            fixed: true
+        },
+        {
+            name: "totalInvestmentAfterTaxes",
+            value: calculateStockAfterSell(totalInvestment, investProfit),
             fixed: true
         },
         {
@@ -111,9 +114,9 @@ function mySecond() {
     resultsDiv.innerHTML = innerHtml;
 }
 
-function calculate(profit) {
-    const p = profit / 30;
-    return p * 22;
+function calculateStockAfterSell(totalInvestment, profit) {
+    let nonTaxibleInvestment = totalInvestment - profit;
+    return nonTaxibleInvestment + profit * 0.7;
 }
 
 function createP(name, value, fixed) {
